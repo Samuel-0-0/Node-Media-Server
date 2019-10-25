@@ -6,7 +6,7 @@ FROM node:10-alpine AS base
 #
 #
 
-RUN     apk  add --no-cache --update libgcc libstdc++ ca-certificates libcrypto1.0 libssl1.0 libgomp expat git
+RUN     apk  add --no-cache --update libgcc libstdc++ ca-certificates libcrypto libssl libgomp expat git
 
 FROM        base AS build
 
