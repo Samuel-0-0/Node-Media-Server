@@ -13,7 +13,7 @@ ARG SRC_URL="${SRC_URL_PREFIX}/${GIT_BRANCH}.zip"
 RUN cd      /tmp/                                                   && \
     wget    ${SRC_URL}  &&   unzip  *.zip                           && \
     rm      *.zip       &&   mv     Node-Media-Server* /usr/nms     && \
-    cd      /usr/nms    &&   npm i                                  && \
+    cd      /usr/nms    &&   npm i
 
 
 COPY --from=ffmpeg /usr/local /usr/local
