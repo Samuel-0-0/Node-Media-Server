@@ -1,5 +1,6 @@
 FROM jrottenberg/ffmpeg:4.2-alpine
-MAINTAINER  Samuel Wang <imhsaw@gmail.com>
+
+ENTRYPOINT  []
 
 ENV NODE_VERSION 10.17.0
 
@@ -76,13 +77,8 @@ ARG SRC_URL_PREFIX=https://github.com/illuspas/Node-Media-Server/archive
 ARG SRC_URL="${SRC_URL_PREFIX}/${GIT_BRANCH}.zip"
 
 # build
-RUN \
-    wget    ${SRC_URL}  &&   unzip  *.zip                           && \
-    mv     Node-Media-Server* /usr/nms
-
-
-WORKDIR     /usr/nms
-RUN         npm i
+RUN cd /tmp && wget ${SRC_URL} && unzip *.zip && mv Node-Media-Server* /usr/nms \
+    && rm *.zip && cd /usr/nms && npm i
 
 COPY docker-entrypoint.sh /usr/local/bin/
 ENTRYPOINT ["docker-entrypoint.sh"]
