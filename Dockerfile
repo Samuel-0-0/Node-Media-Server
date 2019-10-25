@@ -20,7 +20,6 @@ COPY --from=ffmpeg /usr/local /usr/local
 
 EXPOSE 1935 8000 8443
 
-VOLUME /usr/nms
 
 CMD ["node","app.js"]
 
